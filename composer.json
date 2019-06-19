@@ -1,5 +1,5 @@
 {
-    "name": "yabacon/paystack-php",
+    "name": "maciejanoss/paystack-php",
     "type": "library",
     "description": "Helps make your Paystack API calls giving a stdClass object.",
     "keywords": [
@@ -17,7 +17,7 @@
         "verify",
         "curl"
     ],
-    "homepage": "https://github.com/yabacon/paystack-php",
+    "homepage": "https://github.com/maciejanoss/paystack-php",
     "license": "MIT",
     "authors": [
         {
