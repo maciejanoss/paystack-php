@@ -120,6 +120,11 @@ class Request
     {
         //open connection
         $ch = \curl_init();
+
+        if (function_exists('log_message')) {
+            log_message('info', sprintf('paystack request: %s | params: %s', $this->endpoint, json_encode($this->body)));
+        }
+
         \curl_setopt($ch, \CURLOPT_URL, $this->endpoint);
         ($this->method === RouteInterface::POST_METHOD) && \curl_setopt($ch, \CURLOPT_POST, true);
         ($this->method === RouteInterface::PUT_METHOD) && \curl_setopt($ch, \CURLOPT_CUSTOMREQUEST, 'PUT');
@@ -132,6 +137,9 @@ class Request
         $this->response->forApi && \curl_setopt($ch, \CURLOPT_SSLVERSION, 6);
 
         $this->response->body = \curl_exec($ch);
+        if (function_exists('log_message')) {
+            log_message('info', sprintf('paystack response: %s', json_encode($this->response->body)));
+        }
 
         if (\curl_errno($ch)) {
             $cerr = \curl_error($ch);
